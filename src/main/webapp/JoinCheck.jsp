@@ -30,7 +30,7 @@
 			preStmt = conn.prepareStatement(query);
 			preStmt2 = conn.prepareStatement(query2);
 			
-			//UserJoin.jsp 로부터 정보 가져옴
+			//UserJoin.jsp 로 부터 정보 가져옴
 			request.setCharacterEncoding("euc-kr"); //글자깨짐 방지
 			String id = request.getParameter("new_id");
 			String pw = request.getParameter("new_pw");

@@ -13,7 +13,7 @@ text-align:center;
 </style>
 </head>
 <body>
-	<% // 이미 로그인이 된 상태에서 회원가입을 누를 경우(이부분은 버튼을 없어지도록 하던지..?)
+	<% // 이미 로그인이 된 상태에서 회원가입을 누를 경우 (이부분은 버튼을 없어지도록 하던지..?)
 		if(session.getAttribute("id")!=null){
 			out.println("<script>");
 			out.println("alert('회원가입이 이미 되어있습니다!')");
