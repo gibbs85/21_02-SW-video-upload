@@ -25,6 +25,7 @@ public class TestDataInput {
 		Post post08 = new Post("pid08", "some/adf/asdf/aa.mp4", "제목08", "내용08", "20211127", user00.id);
 		Post post09 = new Post("pid09", "some/adf/asdf/aa.mp4", "제목09", "내용09", "20211127", user00.id);
 		
+		
 		if(!sql.check_dup(post01))
 			sql.insert_value(post01);
 		if(!sql.check_dup(post02))

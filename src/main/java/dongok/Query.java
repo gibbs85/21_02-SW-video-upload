@@ -24,6 +24,31 @@ public class Query {
 		this.stmt = null;
 	}
 	
+	public ResultSet search_user_byID(String user_id) {
+		try {
+			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			this.stmt = conn.createStatement();
+			String statement =
+					"SELECT *"
+					+" FROM user"
+					+" WHERE id='"+user_id+"';";
+			ResultSet result = stmt.executeQuery(statement);
+			
+			return result;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				stmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		ResultSet result = null;
+		return result;
+	}
+	
 	public ResultSet search_all(Post post) {
 		try {
 			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);

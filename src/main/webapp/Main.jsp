@@ -8,15 +8,39 @@
 <head>
 	<link rel="stylesheet" href="dongok.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인 페이지</title>
 </head>
 <body>
 <!-------------------------------------------------------네비게이션------------------------------------------------------->
+
+<!--  css필요함. head에 <link rel="stylesheet" href="dongok.css"> -->
 	<div id="div_nav_container">
 		<div id="div_nav_button">
-			<button type="button" class="nav" style="float: left;">홈 아이콘</button>
-			<button type="button" class="nav" style="float: right;">회원가입</button>
-			<button type="button" class="nav" style="float: right;">로그인</button>
+		
+	<!-- 로그인되지 않았을 때 -->
+	<% if(session.getAttribute("id") == null) { %>
+			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+			<button type="button" class="nav" style="float: right;"  onclick="location.href='UserJoin.jsp' ">회원가입</button>
+			<button type="button" class="nav" style="float: right;" onclick="location.href='Login.jsp' ">로그인</button>
+			
+	<!-- 유저타입 == 0. admin -->
+	<%	} else if((Integer)session.getAttribute("user_type") == 0) {%>
+			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+			<button type="button" class="nav" style="float: right;" >회원관리</button>
+			<button type="button" class="nav" style="float: right;"  onclick="location.href='LogOut.jsp' ">로그아웃</button>
+			
+	<!-- 유저타입 == 1. 튜터 -->
+	<% } else if((Integer)session.getAttribute("user_type") == 1){ %>
+			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+			<button type="button" class="nav" style="float: right;" >영상관리</button>
+			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
+			
+	<!-- 유저타입 == 2. 튜티 -->
+	<% } else if((Integer)session.getAttribute("user_type") == 2){%>
+			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+			<button type="button" class="nav" style="float: right; width:100px;" onclick="location.href='Referred.jsp' ">추천영상조회</button>
+			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
+	<% } %>
 		</div>
 		<br>
 		<br>
@@ -29,7 +53,7 @@
 			</form>
 		</div>
 	</div>
-
+	
 <!-------------------------------------------------------게시물 목록------------------------------------------------------->
 	<br>
 	<br>

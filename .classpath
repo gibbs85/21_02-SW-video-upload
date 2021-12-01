@@ -9,5 +9,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/Login.jsp"/>
+	<classpathentry kind="lib" path="src/main/webapp/LoginCheck.jsp"/>
+	<classpathentry kind="lib" path="src/main/webapp/LogOut.jsp"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
