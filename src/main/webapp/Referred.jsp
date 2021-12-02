@@ -3,6 +3,7 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="dongok.Query" %>
 <%@ page import="dongok.Post" %>
+<%@ page import="dongok.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,6 +55,51 @@
 		</div>
 	</div>
 	
-<!-------------------------------------------------------게시물 목록------------------------------------------------------->
+<!-------------------------------------------------------추천 영상 목록------------------------------------------------------->
+	<%
+		//session에서 튜티 정보 받아오기
+		String tutie_id = (String)session.getAttribute("id");
+		Query sql = new Query();
+		ResultSet user = sql.search_user_byID(tutie_id);
+		user.next();
+		String user_id = user.getNString("id");
+		String name = user.getNString("name");
+		String email = user.getNString("email");
+		String message = user.getNString("message");
+		User tutie = new User(user_id, "NONE", name, email, 1, message);
+		
+		//튜티에게 추천된 suggestion DB 받아오기
+		ResultSet suggestion = sql.search_suggested(tutie);
+		
+	%>	
+	<div id="div_post_list">
+		<table class="post_list">
+			<caption id="caption_title">추천 받은 게시물</caption>
+			<tr>
+				<th scope="col" width="10%">게시물ID</th>
+				<th scope="col" width="60%">제목</th>
+				<th scope="col" width="15%">작성자</th>
+				<th scope="col" width="15%">작성일</th>
+			</tr>
+			<%
+				while (suggestion.next()){
+					Post post = sql.search_post_byID(suggestion.getNString("post_id"));
+					
+					String id = post.post_id;
+					String title = post.post_title;
+					String date = post.post_date;
+					String writer = post.writer_id;
+			%>
+			<tr>
+				<td align="center"> <%=id %></td>
+				<td> <%=title %></td>
+				<td align="center"> <%=writer %></td>
+				<td align="center"> <%=date %></td>
+				<%
+					}
+				%>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
