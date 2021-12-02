@@ -77,9 +77,10 @@
 			<caption id="caption_title">추천 받은 게시물</caption>
 			<tr>
 				<th scope="col" width="10%">게시물ID</th>
-				<th scope="col" width="60%">제목</th>
+				<th scope="col" width="45%">제목</th>
 				<th scope="col" width="15%">작성자</th>
 				<th scope="col" width="15%">작성일</th>
+				<th scope="col" width="15%">추천 튜터</th>
 			</tr>
 			<%
 				while (suggestion.next()){
@@ -95,6 +96,7 @@
 				<td> <%=title %></td>
 				<td align="center"> <%=writer %></td>
 				<td align="center"> <%=date %></td>
+				<td align="center"> <%=suggestion.getNString("tutor_id") %> </td>
 				<%
 					}
 				%>
