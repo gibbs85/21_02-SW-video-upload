@@ -33,6 +33,9 @@ public class Query {
 					+" FROM user"
 					+" WHERE id='"+user_id+"';";
 			ResultSet result = stmt.executeQuery(statement);
+
+			stmt.close();
+			conn.close();
 			
 			return result;
 		}catch(Exception e) {
@@ -57,6 +60,37 @@ public class Query {
 					"SELECT *"
 					+" FROM post;";
 			ResultSet result = stmt.executeQuery(statement);
+
+			stmt.close();
+			conn.close();
+			
+			return result;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				stmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		ResultSet result = null;
+		return result;
+	}
+	
+	public ResultSet search_byWriter(User writer) {
+		try {
+			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			this.stmt = conn.createStatement();
+			String statement =
+					"SELECT *"
+					+" FROM post"
+					+" WHERE writer_id = '"+writer.id+"';";
+			ResultSet result = stmt.executeQuery(statement);
+
+			stmt.close();
+			conn.close();
 			
 			return result;
 		}catch(Exception e) {
@@ -124,10 +158,16 @@ public class Query {
 				+" WHERE id = '" + user.id + "'";
 		ResultSet result = stmt.executeQuery(statement);
 		
-		if (result.next())
+		if (result.next()) {
+			stmt.close();
+			conn.close();
 			return true;
-		else
+			}
+		else {
+			stmt.close();
+			conn.close();
 			return false;
+			}
 		
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -153,10 +193,16 @@ public class Query {
 				+" WHERE post_id = '" + post.post_id + "'";
 		ResultSet result = stmt.executeQuery(statement);
 		
-		if (result.next())
+		if (result.next()) {
+			stmt.close();
+			conn.close();
 			return true;
-		else
+			}
+		else {
+			stmt.close();
+			conn.close();
 			return false;
+			}
 		
 		}catch(Exception e) {
 			e.printStackTrace();

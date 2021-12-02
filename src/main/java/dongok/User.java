@@ -16,5 +16,17 @@ public class User {
 		this.user_type = user_type;
 		this.message = message;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public String getMessage() {
+		return this.message;
+	}
 
 }

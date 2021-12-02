@@ -32,7 +32,7 @@
 	<!-- 유저타입 == 1. 튜터 -->
 	<% } else if((Integer)session.getAttribute("user_type") == 1){ %>
 			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
-			<button type="button" class="nav" style="float: right;" >영상관리</button>
+			<button type="button" class="nav" style="float: right;" onclick="location.href='TutorUploaded.jsp' ">영상관리</button>
 			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 			
 	<!-- 유저타입 == 2. 튜티 -->
@@ -83,7 +83,7 @@
 			<tr>
 				<td align="center"> <%=id %></td>
 				<td> <%=title %></td>
-				<td align="center"> <%=writer %></td>
+				<td align="center"><%=writer %></td>
 				<td align="center"> <%=date %></td>
 				<%
 					}
