@@ -18,9 +18,6 @@
         <!--
             파일 업로드는 input type="file"로 지정한다.
          -->
-          <!--
-            파일 업로드는 input type="file"로 지정한다.
-         -->
         파일명1 : <input type="file" name="fileName1" /><br/>
         <input type="submit" value="전송" />  
         <input type="reset" value="취소" />
