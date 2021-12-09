@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1 align="center" style="font-family:Segoe Script;font-size:40px">Id Check</h1>
-	<!-- 정보 받아서 IdCheck로 넘기기 -->
+	<!-- 정보 받아서 IdCheck로 넘기기! -->
 	<form name="frmIdCheck" action="IdCheck.jsp" method="post">
 		<table border="8" bordercolor="#E6E6FA" style="margin-left:auto; margin-right:auto;">
 			<tr>
