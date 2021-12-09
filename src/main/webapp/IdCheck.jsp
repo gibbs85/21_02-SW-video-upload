@@ -24,7 +24,7 @@
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			preStmt = conn.prepareStatement(query);
 			
-			//아이디 중복 창에서 정보 가져옴 
+			//아이디 중복 창에서 정보 가져옴  
 			request.setCharacterEncoding("UTF-8"); //글자깨짐 방지
 			String user_id = request.getParameter("check_id");
 			
