@@ -10,9 +10,9 @@
 <body>
 	<%
 		//DB연동
-		String jdbcDriver="jdbc:mariadb://localhost:3307/dbswvideo";
+		String jdbcDriver="jdbc:mariadb://localhost:3306/dbswvideo";
 		String dbUser="root";
-		String dbPass="cjy23086";
+		String dbPass="2015211131";
 		
 		Connection conn = null;
 		PreparedStatement preStmt = null;
@@ -92,7 +92,7 @@
 						if(updateCount != 0){ // 쿼리 처리 성공 -> 메인화면으로 돌아가기
 							out.println("<script>");
 							out.println("alert('회원가입에 성공했습니다!')");
-							out.println("location.href='main.jsp'");
+							out.println("location.href='Main.jsp'");
 							out.println("</script>");
 						}else{ // 쿼리 처리 실패 -> 회원가입 페이지로 돌아가기
 							out.println("<script>");

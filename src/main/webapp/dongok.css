@@ -42,6 +42,7 @@ table.post_list td{
 	margin-right: auto;
 	width: 1000px;
 	position: relative;
+	margin-bottom: 8em;
 }
 
 #div_nav_button{
@@ -107,4 +108,36 @@ button.nav{
 	margin-right: auto;
 }
 
+button.link{
+	width: 160px;
+	height: 30px;
+	border: 0px;
+	color: #828282;
+	padding: 5px;
+}
 
+.link:hover{
+	color: black;
+	text-decoration: underline;
+	text-decoration: bold;
+}
+
+#div_profile_container{
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+	position: relative;
+}
+
+#textlike_button{
+	border: 0px;
+	color: black;
+	background-color: white;
+}
+
+#textlike_button:hover{
+	color: black;
+	background: white;
+	text-decoration: underline;
+	text-decoration: bold;
+}

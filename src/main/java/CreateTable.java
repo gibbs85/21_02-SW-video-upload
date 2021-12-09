@@ -49,14 +49,15 @@ public class CreateTable {
 					+"comment_writer_id varchar(20) NOT NULL,"
 					+"foreign key(comment_writer_id) references user(id));";
 			
-			String create_table_statement_upvote =
-					"CREATE TABLE IF NOT EXISTS upvote("
-					+"upvoter_id varchar(20) NOT NULL,"
-					+"upvoted_post_id varchar(10) NOT NULL,"
-					+"primary key (upvoter_id, upvoted_post_id),"
-					+"foreign key(upvoter_id) references user(id),"
-					+"foreign key(upvoted_post_id) references post(post_id),"
-					+"upvote int NOT NULL);"; // 1 == 추천, -1 == 비추천, 0은 table에서 삭제
+			String create_table_statement_suggestion =
+					"CREATE TABLE IF NOT EXISTS suggestion("
+					+"tutor_id varchar(20) NOT NULL,"
+					+"tutie_id varchar(10) NOT NULL,"
+					+"post_id varchar(10) NOT NULL,"
+					+"primary key (tutie_id, post_id),"
+					+"foreign key(tutor_id) references user(id),"
+					+"foreign key(tutie_id) references user(id),"
+					+"foreign key(post_id) references post(post_id));";
 					
 					
 					
@@ -64,6 +65,7 @@ public class CreateTable {
 			stmt.executeUpdate(create_table_statement_post);
 			stmt.executeUpdate(create_table_statement_comment);
 			stmt.executeUpdate(create_table_statement_upvote);
+			stmt.executeUpdate(create_table_statement_suggestion);
 			
 			//stmt.executeUpdate(alter_table_statement);
 			

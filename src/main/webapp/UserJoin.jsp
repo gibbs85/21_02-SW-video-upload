@@ -17,7 +17,7 @@ text-align:center;
 		if(session.getAttribute("id")!=null){
 			out.println("<script>");
 			out.println("alert('회원가입이 이미 되어있습니다!')");
-			out.println("location.href='main.jsp'");
+			out.println("location.href='Main.jsp'");
 			out.println("</script>");
 			
 		}
