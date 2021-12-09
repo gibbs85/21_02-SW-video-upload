@@ -33,7 +33,7 @@ text-align:center;
 					<th align="left">
 						<input type="text" name="new_id" placeholder="아이디" maxlength="20" size="50">
 						(20자 내외)
-						<!-- 중복 검사 버튼 -> 중복확인 페이지 띄움 -->
+						<!-- 중복 검사 버튼 --> 중복확인 페이지 띄움 -->
 						<input type="button" value="아이디 중복 확인" onclick="window.open('IdConfirm.jsp')">
 					</th>
 				</tr>

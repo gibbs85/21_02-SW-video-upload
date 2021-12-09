@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%
-		//DB연동
+		//DB연동 
 		String jdbcDriver="jdbc:mariadb://localhost:3307/dbswvideo";
 		String dbUser="root";
 		String dbPass="cjy23086";
