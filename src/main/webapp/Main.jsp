@@ -86,10 +86,15 @@
 				<td>
 					<form action = "TEMP_Post.jsp" accept-charset="utf-8" method="get">
 					<input type="hidden" name="post_id" value = <%=id%>>
-					<button type="submit" class="none_button_text" name="post_title"><%=title%></button>
+					<button type="submit" class="none_button_text"><%=title%></button>
 					</form>
 				</td>
-				<td align="center"><%=writer %></td>
+				<td align="center">
+					<form action = "TutorUploaded.jsp" accept-charset="utf-8" method="get">
+					<input type="hidden" name="tutor_id" value = <%=writer%>>
+					<button type="submit" class="none_button_text"><%=writer%></button>
+					</form>
+				</td>
 				<td align="center"> <%=date %></td>
 				<%
 					}

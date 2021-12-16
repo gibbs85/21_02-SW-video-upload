@@ -93,8 +93,18 @@
 			%>
 			<tr>
 				<td align="center"> <%=id %></td>
-				<td> <%=title %></td>
-				<td align="center"> <%=writer %></td>
+				<td>
+					<form action = "TEMP_Post.jsp" accept-charset="utf-8" method="get">
+					<input type="hidden" name="post_id" value = <%=id%>>
+					<button type="submit" class="none_button_text" name="post_title"><%=title%></button>
+					</form>
+				</td>
+				<td align="center">
+					<form action = "TutorUploaded.jsp" accept-charset="utf-8" method="get">
+					<input type="hidden" name="writer" value = <%=writer%>>
+					<button type="submit" class="none_button_text" name="tutor_id"><%=writer%></button>
+					</form>
+				</td>
 				<td align="center"> <%=date %></td>
 				<%
 					}
