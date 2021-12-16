@@ -25,12 +25,8 @@ public class TestDataInput {
 		Post post11 = new Post("pid11", "some/adf/asdf/aa.mp4", "제목11", "내용11", "20211202", tutor99.id);
 		Post post12 = new Post("pid12", "some/adf/asdf/aa.mp4", "제목12", "내용12", "20211202", tutor99.id);
 		
-		Suggestion sug00 = new Suggestion(tutor91.id, tutie00.id, post00.post_id);
-		Suggestion sug01 = new Suggestion(tutor91.id, tutie00.id, post01.post_id);
-		Suggestion sug02 = new Suggestion(tutor91.id, tutie00.id, post02.post_id);
-		Suggestion sug03 = new Suggestion(tutor99.id, tutie00.id, post05.post_id);
-		
-
+		Upvote upv00 = new Upvote(tutie00.id, post05.post_id, 1);
+		Upvote upv01 = new Upvote(tutie00.id, post07.post_id, 1);
 		
 		if(!sql.check_dup(tutie00))
 			sql.insert_value(tutie00);
@@ -38,8 +34,6 @@ public class TestDataInput {
 			sql.insert_value(tutor91);
 		if(!sql.check_dup(tutor99))
 			sql.insert_value(tutor99);
-		
-		
 		
 		if(!sql.check_dup(post00))
 			sql.insert_value(post00);
@@ -68,15 +62,10 @@ public class TestDataInput {
 		if(!sql.check_dup(post12))
 			sql.insert_value(post12);
 		
-
-		if(!sql.check_dup(sug00))
-			sql.insert_value(sug00);
-		if(!sql.check_dup(sug01))
-			sql.insert_value(sug01);
-		if(!sql.check_dup(sug02))
-			sql.insert_value(sug02);
-		if(!sql.check_dup(sug03))
-			sql.insert_value(sug03);
+		if(!sql.check_dup(upv00))
+			sql.insert_value(upv00);
+		if(!sql.check_dup(upv01))
+			sql.insert_value(upv01);
 		
 		
 		

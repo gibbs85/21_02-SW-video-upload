@@ -3,6 +3,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/*
+ * 관련 비기능 요구사항
+ * 영상제목(게시물 제목) 20글자 이내
+ * 영상설명 100글자 이내
+ * 튜티는 영상추천/비추천 이벤트를 영상 한 개당 하나씩만
+ */
+
+/*
+ * ----------수정 사항----------
+ * 2021/12/16 박동옥
+ * 		post_title varchar(128) -> varchar(20)
+ * 		post_content varchar(512) -> varchar(100)
+ * 		statement_suggestion 은 삭제 예정
+ */
+
 public class CreateTable {
 
 	public static void main(String[] args) {
@@ -34,8 +49,8 @@ public class CreateTable {
 					"CREATE TABLE IF NOT EXISTS post("
 					+"post_id varchar(10) NOT NULL primary key,"
 					+"dir_video varchar(200) NOT NULL,"
-					+"post_title varchar(128) NOT NULL,"
-					+"post_content varchar(512) NOT NULL,"
+					+"post_title varchar(20) NOT NULL,"//
+					+"post_content varchar(100) NOT NULL,"
 					+"post_date varchar(8) NOT NULL,"
 					+"writer_id varchar(20) NOT NULL,"
 					+"foreign key(writer_id) references user(id));";
@@ -49,15 +64,14 @@ public class CreateTable {
 					+"comment_writer_id varchar(20) NOT NULL,"
 					+"foreign key(comment_writer_id) references user(id));";
 			
-			String create_table_statement_suggestion =
-					"CREATE TABLE IF NOT EXISTS suggestion("
-					+"tutor_id varchar(20) NOT NULL,"
-					+"tutie_id varchar(10) NOT NULL,"
-					+"post_id varchar(10) NOT NULL,"
-					+"primary key (tutie_id, post_id),"
-					+"foreign key(tutor_id) references user(id),"
-					+"foreign key(tutie_id) references user(id),"
-					+"foreign key(post_id) references post(post_id));";
+			String create_table_statement_upvote =
+					"CREATE TABLE IF NOT EXISTS upvote("
+					+"upvoter_id varchar(20) NOT NULL,"
+					+"upvoted_post_id varchar(10) NOT NULL,"
+					+"primary key (upvoter_id, upvoted_post_id),"
+					+"foreign key(upvoter_id) references user(id),"
+					+"foreign key(upvoted_post_id) references post(post_id),"
+					+"upvote int NOT NULL);"; // 1 == 추천, -1 == 비추천, 0은 table에서 삭제
 					
 					
 					
@@ -65,8 +79,6 @@ public class CreateTable {
 			stmt.executeUpdate(create_table_statement_post);
 			stmt.executeUpdate(create_table_statement_comment);
 			stmt.executeUpdate(create_table_statement_upvote);
-			stmt.executeUpdate(create_table_statement_suggestion);
-			
 			//stmt.executeUpdate(alter_table_statement);
 			
 			System.out.println("Table_create_Sucess");

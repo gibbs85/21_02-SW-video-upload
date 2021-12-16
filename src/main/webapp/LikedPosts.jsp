@@ -39,7 +39,7 @@
 	<!-- 유저타입 == 2. 튜티 -->
 	<% } else if((Integer)session.getAttribute("user_type") == 2){%>
 			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
-			<button type="button" class="nav" style="float: right; width:100px;" onclick="location.href='Referred.jsp' ">추천영상조회</button>
+			<button type="button" class="nav" style="float: right; width:100px;" onclick="location.href='LikedPosts.jsp' ">추천영상조회</button>
 			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 	<% } %>
 		</div>
@@ -68,23 +68,23 @@
 		String message = user.getNString("message");
 		User tutie = new User(user_id, "NONE", name, email, 1, message);
 		
-		//튜티에게 추천된 suggestion DB 받아오기
-		ResultSet suggestion = sql.search_suggested(tutie);
+		ResultSet liked_post_ids = sql.search_liked_posts_id(tutie);//추천 누른 게시글ID resultset
+		
 		
 	%>	
 	<div id="div_post_list">
 		<table class="post_list">
-			<caption id="caption_title">추천 받은 게시물</caption>
+			<caption id="caption_title">추천을 누른 게시물</caption>
 			<tr>
 				<th scope="col" width="10%">게시물ID</th>
-				<th scope="col" width="45%">제목</th>
+				<th scope="col" width="60%">제목</th>
 				<th scope="col" width="15%">작성자</th>
 				<th scope="col" width="15%">작성일</th>
-				<th scope="col" width="15%">추천 튜터</th>
 			</tr>
 			<%
-				while (suggestion.next()){
-					Post post = sql.search_post_byID(suggestion.getNString("post_id"));
+				while (liked_post_ids.next()){
+					
+					Post post = sql.search_post_byID(liked_post_ids.getNString("upvoted_post_id"));
 					
 					String id = post.post_id;
 					String title = post.post_title;
@@ -96,7 +96,6 @@
 				<td> <%=title %></td>
 				<td align="center"> <%=writer %></td>
 				<td align="center"> <%=date %></td>
-				<td align="center"> <%=suggestion.getNString("tutor_id") %> </td>
 				<%
 					}
 				%>

@@ -94,6 +94,34 @@ public class Query {
 		return null;
 	}
 	
+	public ResultSet search_liked_posts_id(User tutie) {
+		try {
+			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			this.stmt = conn.createStatement();
+			String statement =
+					"SELECT upvoted_post_id"
+					+" FROM upvote"
+					+" WHERE upvoter_id='"+tutie.id+"';";
+			ResultSet result = stmt.executeQuery(statement);
+
+			stmt.close();
+			conn.close();
+			
+			return result;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				stmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		ResultSet result = null;
+		return result;
+	}
+	
 	public ResultSet search_user_byID(String user_id) {
 		try {
 			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
@@ -218,12 +246,12 @@ public class Query {
 		}
 	}
 	
-	public void insert_value(Suggestion suggestion) {
+	public void insert_value(Upvote upvote) {
 		try {
 			this.conn = DriverManager.getConnection(this.jdbcDriver, this.dbUser, this.dbPass);
 			this.stmt = conn.createStatement();
-			String statement = "insert into suggestion(tutor_id, tutie_id, post_id) values("
-					+ "'" +suggestion.tutor_id+ "', '" +suggestion.tutie_id+ "', '"+suggestion.post_id+ "'"
+			String statement = "insert into upvote(upvoter_id, upvoted_post_id, upvote) values("
+					+ "'" +upvote.upvoter_id+ "', '" +upvote.upvoted_post_id+"', "+ upvote.upvote
 					+ ");";
 			System.out.println(statement);
 			stmt.executeUpdate(statement);
@@ -239,14 +267,16 @@ public class Query {
 		}
 	}
 	
-	public boolean check_dup(Suggestion suggestion) {
+	public boolean check_dup(Upvote upvote) {
 		try {
 		this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		this.stmt = conn.createStatement();
 		String statement = 
-				"SELECT tutor_id, tutie_id, post_id"
-				+" FROM suggestion"
-				+" WHERE tutor_id = '" + suggestion.tutor_id + "' AND tutie_id = '" + suggestion.tutor_id + "' AND post_id = '" + suggestion.post_id +"'";
+				"SELECT upvoter_id, upvoted_post_id"
+				+" FROM upvote"
+				+" WHERE upvoter_id = '" + upvote.upvoter_id + "'"
+				+" AND "
+				+" upvoted_post_id = '" + upvote.upvoted_post_id + "'";
 		ResultSet result = stmt.executeQuery(statement);
 		
 		if (result.next()) {

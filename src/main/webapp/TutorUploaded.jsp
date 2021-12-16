@@ -84,7 +84,7 @@
 	<br>
 	<div id="div_post_list">
 		<table class="post_list">
-			<caption id="caption_title">~~~의 작성글</caption>
+			<caption id="caption_title">작성글</caption>
 			<tr>
 				<th scope="col" width="10%">게시물ID</th>
 				<th scope="col" width="60%">제목</th>

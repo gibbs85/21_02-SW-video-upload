@@ -10,9 +10,9 @@
 <body>
 <%
 		//DB 연동
-		String jdbcDriver="jdbc:mariadb://localhost:3306/dbswvideo";
-		String dbUser="root";
-		String dbPass="0125";
+		String jdbcDriver = "jdbc:mariadb://localhost:3306/dbswvideo";
+		String dbUser = "root";
+		String dbPass = "2015211131";
 		
 		Connection conn = null;
 		PreparedStatement preStmt = null;
