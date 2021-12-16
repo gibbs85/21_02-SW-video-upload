@@ -141,10 +141,11 @@
 		</table>
 	</div>
 <!-------------------------------------------------------튜터 본인일 시 업로드 버튼------------------------------------------------------->
-	<% if (writer_id.compareTo((String)session.getAttribute("id")) == 0) { %>
+	<% if(session.getAttribute("id") != null){
+		if (writer_id.compareTo((String)session.getAttribute("id")) == 0) { %>
 	<div id="div_nav_container">
 		<button type="button" class="nav" style="float: right; width:100px; height:40px;" onClick = "location.href='borad.jsp'">글쓰기</button>
 	</div>
-	<% } %>
+	<% }} %>
 </body>
 </html>
