@@ -56,8 +56,10 @@
 	</div>
 	
 <!-------------------------------------------------------튜터 프로필------------------------------------------------------->
+	<!-- 작업 필요. 프로필아이디를 세션에서 가져오지 않고 submit 받아 오는 것으로 해야됨 -->
 	<%
-		String writer_id = (String)session.getAttribute("id");
+		String writer_id = request.getParameter("tutor_id");
+		//String writer_id = (String)session.getAttribute("id");
 		Query sql = new Query();
 		ResultSet user = sql.search_user_byID(writer_id);
 		user.next();

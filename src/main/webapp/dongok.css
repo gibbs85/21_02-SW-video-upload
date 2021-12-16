@@ -67,6 +67,23 @@ button.nav{
 	color: white;
 }
 
+#nav_submit{
+	width: 80px;
+	height: 30px;
+	border: 1px solid #828282;
+	background-color: #ffffff;
+	color: #828282;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	padding: 5px;
+}
+#nav_submit:hover{
+	background: #828282;
+	color: white;
+}
+
 #button_search{
 	width: 10%;
 	height: 100%;
