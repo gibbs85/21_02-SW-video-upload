@@ -121,7 +121,7 @@
 				</td>
 				<td align="center">
 					<form action = "TutorUploaded.jsp" accept-charset="utf-8" method="get">
-					<input type="hidden" name="writer" value = <%=writer_id%>>
+					<input type="hidden" name="tutor_id" value = <%=writer_id%>>
 					<button type="submit" class="none_button_text" name="tutor_id"><%=writer_name%></button>
 					</form>
 				</td>
