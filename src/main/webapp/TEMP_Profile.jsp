@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="dongok.Query" %>
-<%@ page import="dongok.Post" %>
 <%@ page import="dongok.User" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 	<link rel="stylesheet" href="dongok.css">
-<title>추천 영상 조회</title>
+<meta charset="UTF-8">
+<title>TEMP 프로필</title>
 </head>
 <body>
 <!-------------------------------------------------------네비게이션------------------------------------------------------->
@@ -70,67 +69,21 @@
 			</form>
 		</div>
 	</div>
-	
-<!-------------------------------------------------------추천 영상 목록------------------------------------------------------->
-	<%
-		//session에서 튜티 정보 받아오기
-		String tutie_id = (String)session.getAttribute("id");
-		Query sql = new Query();
-		ResultSet user = sql.search_user_byID(tutie_id);
-		user.next();
-		String user_id = user.getNString("id");
-		String name = user.getNString("name");
-		String email = user.getNString("email");
-		String message = user.getNString("message");
-		User tutie = new User(user_id, "NONE", name, email, 1, message);
-		
-		ResultSet liked_post_ids = sql.search_liked_posts_id(tutie);//추천 누른 게시글ID resultset
-		
-		
-	%>	
-	<div id="div_post_list">
-		<table class="post_list">
-			<caption id="caption_title">추천을 누른 게시물</caption>
-			<tr>
-				<th scope="col" width="10%">게시물ID</th>
-				<th scope="col" width="60%">제목</th>
-				<th scope="col" width="15%">작성자</th>
-				<th scope="col" width="15%">작성일</th>
-			</tr>
-			<%
-				while (liked_post_ids.next()){
-					
-					Post post = sql.search_post_byID(liked_post_ids.getNString("upvoted_post_id"));
-					
-					String id = post.post_id;
-					String title = post.post_title;
-					String date = post.post_date;
-					String writer_id = post.writer_id;
 
-					ResultSet writer = sql.search_user_byID(writer_id);
-					writer.next();
-					String writer_name = writer.getNString("name");
-			%>
-			<tr>
-				<td align="center"> <%=id %></td>
-				<td>
-					<form action = "TEMP_Post.jsp" accept-charset="utf-8" method="get">
-					<input type="hidden" name="post_id" value = <%=id%>>
-					<button type="submit" class="none_button_text" name="post_title"><%=title%></button>
-					</form>
-				</td>
-				<td align="center">
-					<form action = "TutorUploaded.jsp" accept-charset="utf-8" method="get">
-					<input type="hidden" name="writer" value = <%=writer_id%>>
-					<button type="submit" class="none_button_text" name="tutor_id"><%=writer_name%></button>
-					</form>
-				</td>
-				<td align="center"> <%=date %></td>
-				<%
-					}
-				%>
-			</tr>
-		</table>
+<!-- --------------------------------------------------- -->
+
+<%
+ Query sql = new Query();
+ ResultSet user = sql.search_user_byID(request.getParameter("user_id"));
+ user.next();
+ 
+ %>
+
+	<div id="div_post_list">
+		<h>아이디: <%=user.getNString("id")%></h><br>
+		<h>이름: <%=user.getNString("name")%></h><br>
+		<h>e-mail: <%=user.getNString("email")%></h><br>
+		<h>소개: <%=user.getNString("message")%></h><br>
 	</div>
 </body>
 </html>

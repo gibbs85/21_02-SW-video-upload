@@ -3,6 +3,7 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="dongok.Query" %>
 <%@ page import="dongok.Post" %>
+<%@ page import="dongok.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,32 +20,44 @@
 		
 	<!-- 로그인되지 않았을 때 -->
 	<% if(session.getAttribute("id") == null) { %>
-			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
-			<button type="button" class="nav" style="float: right;"  onclick="location.href='UserJoin.jsp' ">회원가입</button>
-			<button type="button" class="nav" style="float: right;" onclick="location.href='Login.jsp' ">로그인</button>
+			<button type="button" class="nav_none_buttonlike" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;"  onclick="location.href='UserJoin.jsp' ">회원가입</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;" onclick="location.href='Login.jsp' ">로그인</button>
 			
+	<% } else{//로그인 되어있다면 session에서 받은 id로 User 서치
+		Query sql = new Query();
+		ResultSet user = sql.search_user_byID((String)session.getAttribute("id"));
+		user.next();
+		String user_name = user.getNString("name");//이름만 받아옴
+	
+	%>
 	<!-- 유저타입 == 0. admin -->
-	<%	} else if((Integer)session.getAttribute("user_type") == 0) {%>
-			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
-			<button type="button" class="nav" style="float: right;" >회원관리</button>
-			<button type="button" class="nav" style="float: right;"  onclick="location.href='LogOut.jsp' ">로그아웃</button>
+		<%	if((Integer)session.getAttribute("user_type") == 0) {%>
+			<button type="button" class="nav_none_buttonlike" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;" >회원관리</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;"  onclick="location.href='LogOut.jsp' ">로그아웃</button>
 			
 	<!-- 유저타입 == 1. 튜터 -->
-	<% } else if((Integer)session.getAttribute("user_type") == 1){ %>
-			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+		<% } else if((Integer)session.getAttribute("user_type") == 1){ %>
+			<button type="button" class="nav_none_buttonlike" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
 			<form action = "TutorUploaded.jsp" accept-charset="utf-8" method="get">
 				<input type="hidden" name="tutor_id" value = <%=session.getAttribute("id") %>>
-				<button type="submit" class="nav" style="float: right;">영상관리</button>
+				<button type="submit" class="nav_none_buttonlike" style="float: right;">영상관리</button>
 			</form>
-			<button type="button" class="nav" style="float: right;" onClick = "location.href='borad.jsp'">글쓰기</button>
-			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;" onClick = "location.href='borad.jsp'">글쓰기</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 			
 	<!-- 유저타입 == 2. 튜티 -->
-	<% } else if((Integer)session.getAttribute("user_type") == 2){%>
-			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
-			<button type="button" class="nav" style="float: right; width:100px;" onclick="location.href='LikedPosts.jsp' ">추천영상조회</button>
-			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
-	<% } %>
+		<% } else if((Integer)session.getAttribute("user_type") == 2){%>
+			<button type="button" class="nav_none_buttonlike" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right; width:100px;" onclick="location.href='LikedPosts.jsp' ">추천영상조회</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
+		<% } %>
+			<form action = "TEMP_Profile.jsp" accept-charset="utf-8" method="get">
+				<input type="hidden" name="user_id" value = <%=session.getAttribute("id") %>>
+	        	<button type="submit" class="nav_none_buttonlike" style="float: right;"><b><%=user_name%></b> 님, 환영합니다. </button>
+	        </form>
+	<%} %>
 		</div>
 		<br>
 		<br>
@@ -79,7 +92,11 @@
 					String id = search.getNString("post_id");
 					String title = search.getNString("post_title");
 					String date = search.getNString("post_date");
-					String writer = search.getNString("writer_id");
+					String writer_id = search.getNString("writer_id");
+					
+					ResultSet writer = sql.search_user_byID(writer_id);
+					writer.next();
+					String writer_name = writer.getNString("name");
 			%>
 			<tr>
 				<td align="center"> <%=id %></td>
@@ -91,8 +108,8 @@
 				</td>
 				<td align="center">
 					<form action = "TutorUploaded.jsp" accept-charset="utf-8" method="get">
-					<input type="hidden" name="tutor_id" value = <%=writer%>>
-					<button type="submit" class="none_button_text"><%=writer%></button>
+					<input type="hidden" name="tutor_id" value = <%=writer_id%>>
+					<button type="submit" class="none_button_text"><%=writer_name%></button>
 					</form>
 				</td>
 				<td align="center"> <%=date %></td>

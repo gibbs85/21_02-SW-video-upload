@@ -82,6 +82,24 @@ button.none_button_text{
     cursor: pointer;
 }
 
+button.nav_none_buttonlike{
+	background: none;
+	border: none;
+	padding: 0;
+	color: #828282;
+	padding: 8px;
+}
+
+.nav_none_buttonlike:hover{
+	background: none;
+	border: none;
+	padding: 8px;
+	color: #000000;
+	
+	text-decoration: underline;
+    cursor: pointer;
+}
+
 
 #button_search{
 	width: 10%;
