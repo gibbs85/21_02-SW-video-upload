@@ -67,22 +67,21 @@ button.nav{
 	color: white;
 }
 
-#nav_submit{
-	width: 80px;
-	height: 30px;
-	border: 1px solid #828282;
-	background-color: #ffffff;
-	color: #828282;
-	border-top-left-radius:5px;
-	border-top-right-radius:5px;
-	border-bottom-left-radius:5px;
-	border-bottom-right-radius:5px;
-	padding: 5px;
+button.none_button_text{
+	background: none;
+	border: none;
+	padding: 0;
+	color: #000000;
 }
-#nav_submit:hover{
-	background: #828282;
-	color: white;
+.none_button_text:hover{
+	background: none;
+	border: none;
+	padding: 0;
+	color: #000000;
+	text-decoration: underline;
+    cursor: pointer;
 }
+
 
 #button_search{
 	width: 10%;

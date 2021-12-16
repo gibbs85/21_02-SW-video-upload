@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="dongok.Query" %>
 <%@ page import="dongok.Post" %>
 <!DOCTYPE html>
@@ -8,9 +7,15 @@
 <head>
 	<link rel="stylesheet" href="dongok.css">
 <meta charset="UTF-8">
-<title>메인 페이지</title>
+<title>Insert title here</title>
 </head>
 <body>
+<!--
+		다른 페이지의 기능 확인을 위한 임시 페이지입니다.
+		영상 상세 보기	 
+ -->
+
+<!-- submit 받은 post id로 post를 서치하고 정보를 출력합니다. -->
 <!-------------------------------------------------------네비게이션------------------------------------------------------->
 
 <!--  css필요함. head에 <link rel="stylesheet" href="dongok.css"> -->
@@ -59,44 +64,17 @@
 	</div>
 	
 <!-------------------------------------------------------게시물 목록------------------------------------------------------->
-<!-- git 테스트 라인 20211208 -->
+<%
+ Query sql = new Query();
+ Post post = sql.search_post_byID(request.getParameter("post_id"));
+ %>
+
 	<div id="div_post_list">
-		<table class="post_list">
-			<caption id="caption_title">전체글보기</caption>
-			<tr>
-				<th scope="col" width="10%">게시물ID</th>
-				<th scope="col" width="60%">제목</th>
-				<th scope="col" width="15%">작성자</th>
-				<th scope="col" width="15%">작성일</th>
-			</tr>
-			<%
-			Post post = new Post("NONE", "NONE", "NONE", "NONE", "NONE", "NONE");//임시 객체
-			Query sql = new Query();
-			ResultSet search = sql.search_all(post);//post 전체 resultset
-			%>
-			<%
-				while (search.next()){
-					String id = search.getNString("post_id");
-					String title = search.getNString("post_title");
-					String date = search.getNString("post_date");
-					String writer = search.getNString("writer_id");
-			%>
-			<tr>
-				<td align="center"> <%=id %></td>
-				<td>
-					<form action = "TEMP_Post.jsp" accept-charset="utf-8" method="get">
-					<input type="hidden" name="post_id" value = <%=id%>>
-					<button type="submit" class="none_button_text" name="post_title"><%=title%></button>
-					</form>
-				</td>
-				<td align="center"><%=writer %></td>
-				<td align="center"> <%=date %></td>
-				<%
-					}
-				%>
-			</tr>
-		</table>
+		<h>제목: <%=post.post_title%></h><br>
+		<h>영상경로: <%=post.dir_video%></h><br>
+		<h>설명: <%=post.post_content%></h><br>
+		<h>작성일: <%=post.post_date%></h><br>
+		<h>작성자: <%=post.writer_id %></h><br>
 	</div>
-		
 </body>
 </html>
