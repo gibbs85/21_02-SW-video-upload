@@ -6,7 +6,20 @@
 <head>
 <meta charset="EUC-KR">
 <title>영상 및 튜터 검색창</title>
-</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#tutor_div").hide();
+	$("$video_div").hide();
+});
+function div_show(){
+	//document.getElementById("tutor_div").style.display="block";
+	//document.getElementById("video_div").style.display="block";
+	
+	$("#tutor_div").show();
+	$("#video_div").show();
+}
+</script>
 <style>
 #header{
 text-align:center;
@@ -15,6 +28,7 @@ text-align:center;
 text-align:center;
 }
 </style>
+</head>
 <body>
 	<div id="container">
 	<h1 style="font-family:Segoe Script;">Search</h1>
@@ -45,7 +59,7 @@ text-align:center;
 			PreparedStatement preStmt = null;
 			PreparedStatement preStmt2 = null;
 			
-			// 검색창에 입력된 값 가져오기 
+			// 검색창에 입력된 값 가져오기
 			request.setCharacterEncoding("euc-kr");
 			String rKey = request.getParameter("input_searchThing");
 			String search_key = "%" + rKey + "%"; // 해당 글자가 들어간 위치 상관 없이 검색
@@ -77,8 +91,8 @@ text-align:center;
 					//쿼리 실행
 					ResultSet rs = preStmt.executeQuery();
 					
-					
-					while(rs.next()){
+					if(rs.next()){
+						do{
 						String tutor_name = rs.getString("name");
 						String tutor_id = rs.getString("id");
 				%>
@@ -94,10 +108,25 @@ text-align:center;
 				</tr>
 				
 			<% 
-					}//while
+						}while(rs.next());
+			%>
+			
+			
+			<%
+					}else{ // 튜터에 대한 결과가 없을 경우
+			%>
+			<tr align="center">
+				<td colspan="2">
+					<h1>튜터에 대한 결과 없음</h1>
+				</td>
+			</tr>
+				
+			<%
+				} //else
 			%>
 			</table> 
-			<hr> <!-- 튜터에 대한 검색결과 끝 & 가로선-->
+			<hr width="50%"> <!-- 튜터에 대한 검색결과 끝 & 가로선-->
+			
 			
 			<%
 				preStmt2 = conn.prepareStatement(search_video);
@@ -117,9 +146,10 @@ text-align:center;
 				// 쿼리 실행
 				ResultSet rs2 = preStmt2.executeQuery();
 				
-				while(rs2.next()){
-					String video_title = rs2.getString("post_title");
-					String video_content = rs2.getString("post_content");
+				if(rs2.next()){
+					do{
+						String video_title = rs2.getString("post_title");
+						String video_content = rs2.getString("post_content");
 			%>
 				<!-- 검색에 대한 결과창 중 영상, 결과값 -->
 				<tr align="center">
@@ -132,7 +162,18 @@ text-align:center;
 				</tr>
 				
 			<% 
-				} // while rs2
+					}while(rs2.next());
+				}else{ // 영상에 대한 검색 결과가 없을 때 
+			%>
+			<tr align="center">
+				<td colspan="2">
+					<h1>영상에 대한 결과 없음</h1>
+				</td>
+			</tr>
+			
+			<% 
+				} // else
+			
 			}catch(Exception e){ 
 				e.printStackTrace();
 			}finally{
@@ -144,7 +185,6 @@ text-align:center;
 				}
 			}
 			%>
-			</table>
-	
+	</table>
 	
 </html>
