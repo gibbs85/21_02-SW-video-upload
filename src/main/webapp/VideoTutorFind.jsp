@@ -45,7 +45,7 @@ text-align:center;
 			PreparedStatement preStmt = null;
 			PreparedStatement preStmt2 = null;
 			
-			// 검색창에 입력된 값 가져오기
+			// 검색창에 입력된 값 가져오기 
 			request.setCharacterEncoding("euc-kr");
 			String rKey = request.getParameter("input_searchThing");
 			String search_key = "%" + rKey + "%"; // 해당 글자가 들어간 위치 상관 없이 검색
