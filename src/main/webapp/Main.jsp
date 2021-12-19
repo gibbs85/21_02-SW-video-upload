@@ -44,7 +44,7 @@
 				<input type="hidden" name="tutor_id" value = <%=session.getAttribute("id") %>>
 				<button type="submit" class="nav_none_buttonlike" style="float: right;">영상관리</button>
 			</form>
-			<button type="button" class="nav_none_buttonlike" style="float: right;" onClick = "location.href='borad.jsp'">글쓰기</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;" onClick = "location.href='borad_new.jsp'">글쓰기</button>
 			<button type="button" class="nav_none_buttonlike" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 			
 	<!-- 유저타입 == 2. 튜티 -->
