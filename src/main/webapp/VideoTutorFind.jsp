@@ -150,11 +150,12 @@ text-align:center;
 					do{
 						String video_title = rs2.getString("post_title");
 						String video_content = rs2.getString("post_content");
+						String video_postid = rs2.getString("post_id");
 			%>
 				<!-- 검색에 대한 결과창 중 영상, 결과값 -->
 				<tr align="center">
 					<td>
-						<a href="SearchInfo.jsp?tutor_id=<%=video_title %>">
+						<a href="SearchInfo.jsp?video_postid=<%=video_postid %>">
 							<%=video_title %>
 						</a>
 					</td>
