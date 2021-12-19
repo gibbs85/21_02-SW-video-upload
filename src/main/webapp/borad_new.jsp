@@ -15,7 +15,7 @@
 		<div id="div_nav_button">
 		
 	<!-- 로그인되지 않았을 때 -->
-	<% if(session.getAttribute("id") == null) { %>
+	<% 	if(session.getAttribute("id") == null) { %>
 			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
 			<button type="button" class="nav" style="float: right;"  onclick="location.href='UserJoin.jsp' ">회원가입</button>
 			<button type="button" class="nav" style="float: right;" onclick="location.href='Login.jsp' ">로그인</button>
@@ -38,7 +38,9 @@
 			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
 			<button type="button" class="nav" style="float: right; width:100px;" onclick="location.href='Referred.jsp' ">추천영상조회</button>
 			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
-	<% } %>
+	<% } 
+		String user_id = (String) session.getAttribute("id"); 
+	%>
 		</div>
 		<br>
 		<br>
@@ -55,49 +57,8 @@
 	<br>
 	<br>
 	<br>
-	<%
-		//DB 연동
-		String jdbcDriver="jdbc:mariadb://localhost:3306/dbswvideo";
-		String dbUser="root";
-		String dbPass="0125";
-		
-		Connection conn = null;
-		PreparedStatement preStmt = null;
-		
-		try{
-			String driver="org.mariadb.jdbc.Driver";
-			Class.forName(driver);
-			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			
-			//login 페이지에서 정보 가져옴
-			request.setCharacterEncoding("UTF-8"); //글자깨짐 방지
-			String id = request.getParameter("input_id");
-			String pw = request.getParameter("input_pw");
-			
-			//처리할 쿼리
-			String query = "select * from user where id = ?";
-			preStmt = conn.prepareStatement(query);
-			preStmt.setString(1, id); 
-			
-			//쿼리 실행
-			ResultSet rs = preStmt.executeQuery();
-			
-			if(rs.next()){
-				String user_id = rs.getString("id");
-			} catch(Exception e){ 
-				e.printStackTrace();
-			}finally{
-				try{
-					preStmt.close();
-					conn.close();
-				}catch(SQLException e){
-					e.printStackTrace();
-				}
-			}
-		}
-		%>
-    	<form action="fileupload.jsp" method="post" enctype="Multipart/form-data">
-        	올린 사람 : <%=id %><br/>
+    	<form action="filecheck.jsp" method="post" enctype="Multipart/form-data">
+        	올린 사람 : <%=user_id %><br/>
         	제목 : <input type="text" name="subject" /><br/>
         	<!--
 	            파일 업로드는 input type="file"로 지정한다.
