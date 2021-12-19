@@ -57,13 +57,20 @@
 	<br>
 	<br>
 	<br>
-    	<form action="filecheck.jsp" method="post" enctype="Multipart/form-data">
-        	올린 사람 : <%=user_id %><br/>
+	<script>
+	var dt = new Date();
+	dt = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate(); 
+    </script>
+    	<form action="borad_check.jsp" method="get" enctype="Multipart/form-data">
+        	올린 사람 : <input type="text" name="id" value="<%=user_id %>" readonly><br/>
+        	<!--   날짜 : <input type="date" name="date" value="dt" readonly> <br/>!-->
         	제목 : <input type="text" name="subject" /><br/>
+        	본문 : <textarea type ="memo" cols="50" rows="8"></textarea> <br/> 
+        	
         	<!--
 	            파일 업로드는 input type="file"로 지정한다.
     	     -->
-        	파일명1 : <input type="file" name="fileName1" /><br/>
+        	파일명 : <input type="file" name="fileName" /><br/>
         	<input type="submit" value="전송" />  
         	<input type="reset" value="취소" />
     </form>
