@@ -39,7 +39,7 @@
 			<button type="button" class="nav" style="float: right; width:100px;" onclick="location.href='Referred.jsp' ">추천영상조회</button>
 			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 	<% } 
-		String user_id = (String) session.getAttribute("id"); 
+	String user_id = (String) session.getAttribute("id"); 
 	%>
 		</div>
 		<br>
