@@ -30,7 +30,7 @@
 	<% } else if((Integer)session.getAttribute("user_type") == 1){ %>
 			<button type="button" class="nav" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
 			<button type="button" class="nav" style="float: right;" onclick="location.href='TutorUploaded.jsp' ">영상관리</button>
-			<button type="button" class="nav" style="float: right;" onClick = "location.href='borad.jsp'">글쓰기</button>
+			<button type="button" class="nav" style="float: right;" onClick = "location.href='borad_new.jsp'">글쓰기</button>
 			<button type="button" class="nav" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 			
 	<!-- 유저타입 == 2. 튜티 -->
@@ -62,10 +62,11 @@
 	dt = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate(); 
     </script>
     	<form action="borad_check.jsp" method="get" enctype="Multipart/form-data">
-        	올린 사람 : <input type="text" name="id" value="<%=user_id %>" readonly><br/>
+        	게시글 번호 : <input type="text" name="post_id" /><br/>
+        	글쓴이 : <input type="text" name="id" value="<%=user_id %>" readonly><br/>
         	<!--   날짜 : <input type="date" name="date" value="dt" readonly> <br/>!-->
         	제목 : <input type="text" name="subject" /><br/>
-        	본문 : <textarea type ="memo" cols="50" rows="8"></textarea> <br/> 
+        	본문 : <textarea type ="memo" cols="50" rows="8" name = "content"></textarea> <br/> 
         	
         	<!--
 	            파일 업로드는 input type="file"로 지정한다.
