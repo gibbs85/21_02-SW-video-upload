@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!--  -->
 	<form action="tempPostResult.jsp" method="post" enctype="multipart/form-data">
 	이름 : <input type="text" name="name"><br>
 	파일 : <input type="file" name="file"><br>
