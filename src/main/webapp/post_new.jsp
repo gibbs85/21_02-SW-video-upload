@@ -61,10 +61,10 @@
 	var dt = new Date();
 	dt = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate(); 
     </script>
-    	<form action="borad_check.jsp" method="get" enctype="Multipart/form-data">
+    	<form action="fileUpload.jsp" method="post" enctype="multipart/form-data">
         	게시글 번호 : <input type="text" name="post_id" /><br/>
-        	글쓴이 : <input type="text" name="id" value="<%=user_id %>" readonly><br/>
-        	<!--   날짜 : <input type="date" name="date" value="dt" readonly> <br/>!-->
+        	글쓴이 : <input type="text" name="name"><br/>
+        	<!--날짜 : <input type="date" name="date" value="dt" readonly> <br/>-->
         	제목 : <input type="text" name="subject" /><br/>
         	본문 : <textarea type ="memo" cols="50" rows="8" name = "content"></textarea> <br/> 
         	
