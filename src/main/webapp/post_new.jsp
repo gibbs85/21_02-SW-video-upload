@@ -69,7 +69,6 @@
         	날짜 : <input type="text" name="date" value="<%=to %>"readonly> <br/>
         	제목 : <input type="text" name="subject" /><br/>
         	본문 : <textarea type ="memo" cols="50" rows="8" name = "content"></textarea> <br/> 
-        	<!--  -->
         	<!--
 	            파일 업로드는 input type="file"로 지정한다.
     	     -->
