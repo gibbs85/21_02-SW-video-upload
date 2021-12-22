@@ -94,6 +94,34 @@ public class Query {
 		return null;
 	}
 	
+	public ResultSet search_comment_by_postid(int post_id) {
+		try {
+			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			this.stmt = conn.createStatement();
+			String statement =
+					"SELECT comment.comment_id, comment.post_id, comment.comment_content, comment_writer_id"
+					+" FROM comment, post"
+					+" WHERE comment.post.id = post.post_id AND post.post_id = "+post_id+";";
+			ResultSet result = stmt.executeQuery(statement);
+
+			stmt.close();
+			conn.close();
+			
+			return result;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				stmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		ResultSet result = null;
+		return result;
+	}
+	
 	public ResultSet search_liked_posts_id(User tutie) {
 		try {
 			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
