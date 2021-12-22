@@ -29,7 +29,7 @@
 		Connection conn = null;
 		Statement stmt = null;
 		
-		String insert_value_single = "INSERT INTO post(post_id, dir_video, post_title, post_content, post_date, writer_id) VALUES ('" + post_id + "','" + dir_video + "','" + post_title + "','" + post_content + "','" + post_date + "','" + writer_id + "');";
+		String insert_value_single = "INSERT INTO post(dir_video, post_title, post_content, post_date, writer_id) VALUES ('" + dir_video + "','" + post_title + "','" + post_content + "','" + post_date + "','" + writer_id + "');";
 		String driver = "org.mariadb.jdbc.Driver";
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		stmt = conn.createStatement();

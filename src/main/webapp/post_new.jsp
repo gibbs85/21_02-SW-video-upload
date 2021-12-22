@@ -61,7 +61,7 @@
 	var dt = new Date();
 	dt = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate(); 
     </script>
-    	<form action="borad_check.jsp" method="get" enctype="Multipart/form-data">
+    	<form action="borad_check.jsp" method="post" enctype="Multipart/form-data">
         	게시글 번호 : <input type="text" name="post_id" /><br/>
         	글쓴이 : <input type="text" name="id" value="<%=user_id %>" readonly><br/>
         	<!--   날짜 : <input type="date" name="date" value="dt" readonly> <br/>!-->

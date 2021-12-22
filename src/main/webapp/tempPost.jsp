@@ -8,7 +8,7 @@
 </head>
 <body>
 <!--  -->
-	<form action="tempPostResult.jsp" method="post" enctype="multipart/form-data">
+	<form action="testvideo.jsp" method="post" enctype="multipart/form-data">
 	이름 : <input type="text" name="name"><br>
 	파일 : <input type="file" name="file"><br>
 	<input type="submit" name="업로드"><br>

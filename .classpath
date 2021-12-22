@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="C:/Users/jssh2/git/21_02-SW-video-upload/src/main/webapp/WEB-INF/lib/commons-io-2.11.0.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 10.0/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 10.0/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jssh2/git/21_02-SW-video-upload/src/main/webapp/WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -57,7 +57,7 @@ public class CreateTable {
 			
 			String create_table_statement_comment =
 					"CREATE TABLE IF NOT EXISTS comment("
-					+"comment_id varchar(10) NOT NULL primary key,"
+					+"comment_id int(10) NOT NULL AUTO_INCREMENT primary key,"
 					+"post_id varchar(10) NOT NULL,"
 					+"foreign key(post_id) references post(post_id),"
 					+"comment_content varchar(128) NOT NULL,"
