@@ -52,14 +52,14 @@
 					out.println("</script>");
 				}else{ //로그인 실패(비밀번호 오류) -> 다시 로그인창으로 돌아감
 					out.println("<script>");
-					out.println("alert('비밀번호가 틀렸습니다! 다시 한번 확인 후 로그인 해주세요')");
+					out.println("alert('PW가 일치하지않습니다! 다시 한번 확인 후 로그인 해주세요')");
 					out.println("location.href='Login.jsp'");
 					out.println("</script>");
 					
 				}
 			}else{ //쿼리 실패 <- 아이디와 일치하는 항목 없음
 				out.println("<script>");
-				out.println("alert('아이디가 틀렸습니다! 다시 한번 확인 후 로그인 해주세요')");
+				out.println("alert('ID가 등록되어있지 않습니다! 다시 한번 확인 후 로그인 해주세요')");
 				out.println("location.href='Login.jsp'");
 				out.println("</script>");
 			}

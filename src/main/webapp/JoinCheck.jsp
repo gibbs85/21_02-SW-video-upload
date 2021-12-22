@@ -72,7 +72,7 @@
 				
 				if(rs.next()){ // 동일한 id를 가진 사람이 있을 경우
 					out.println("<script>");
-					out.println("alert('이미 존재하는 아이디입니다! 아이디 중복 확인 후 다시 시도해주세요.')");
+					out.println("alert('이미 동일한 ID가 사용되고 있습니다. 아이디 중복 확인 후 다시 시도해주세요.')");
 					out.println("location.href='UserJoin.jsp'");
 					out.println("</script>");
 				}
@@ -92,7 +92,7 @@
 						if(updateCount != 0){ // 쿼리 처리 성공 -> 메인화면으로 돌아가기
 							out.println("<script>");
 							out.println("alert('회원가입에 성공했습니다!')");
-							out.println("location.href='Main.jsp'");
+							out.println("location.href='Login.jsp'");
 							out.println("</script>");
 						}else{ // 쿼리 처리 실패 -> 회원가입 페이지로 돌아가기
 							out.println("<script>");
@@ -102,7 +102,7 @@
 						}
 					}else{ // 비밀번호 확인과 불일치 -> 확인요망 메세지창
 						out.println("<script>");
-						out.println("alert('비밀번호가 틀렸습니다! 다시 한번 확인 해주세요.')");
+						out.println("alert('PW가 일치하지 않습니다! 다시 한번 확인 해주세요.')");
 						out.println("location.href='UserJoin.jsp'");
 						out.println("</script>");
 					}

@@ -57,7 +57,9 @@ width:350px;
 				<br>
 				<!-- button -->
 				<input type = "submit" value = "로그인">
-			</form>
+				<!-- 회원가입으로 이어지는 버튼 -->
+				<button type="button" onclick="location.href='UserJoin.jsp' ">회원가입</button>
+			</form>			
 		</div>
 	<% } %>
 </body>

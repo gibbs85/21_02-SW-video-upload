@@ -23,6 +23,7 @@
 			<button type="button" class="nav_none_buttonlike" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
 			<button type="button" class="nav_none_buttonlike" style="float: right;"  onclick="location.href='UserJoin.jsp' ">회원가입</button>
 			<button type="button" class="nav_none_buttonlike" style="float: right;" onclick="location.href='Login.jsp' ">로그인</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;" onclick="location.href='VideoTutorFind.jsp' ">영상튜터검색</button>
 			
 	<% } else{//로그인 되어있다면 session에서 받은 id로 User 서치
 		Query sql = new Query();
@@ -45,12 +46,14 @@
 				<button type="submit" class="nav_none_buttonlike" style="float: right;">영상관리</button>
 			</form>
 			<button type="button" class="nav_none_buttonlike" style="float: right;" onClick = "location.href='borad_new.jsp'">글쓰기</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;" onclick="location.href='VideoTutorFind.jsp' ">영상튜터검색</button>
 			<button type="button" class="nav_none_buttonlike" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 			
 	<!-- 유저타입 == 2. 튜티 -->
 		<% } else if((Integer)session.getAttribute("user_type") == 2){%>
 			<button type="button" class="nav_none_buttonlike" style="float: left;" onclick="location.href='Main.jsp' ">홈 아이콘</button>
 			<button type="button" class="nav_none_buttonlike" style="float: right; width:100px;" onclick="location.href='LikedPosts.jsp' ">추천영상조회</button>
+			<button type="button" class="nav_none_buttonlike" style="float: right;" onclick="location.href='VideoTutorFind.jsp' ">영상튜터검색</button>
 			<button type="button" class="nav_none_buttonlike" style="float: right;"   onclick="location.href='LogOut.jsp' ">로그아웃</button>
 		<% } %>
 			<form action = "TEMP_Profile.jsp" accept-charset="utf-8" method="get">
