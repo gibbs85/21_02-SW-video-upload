@@ -52,7 +52,7 @@ public class Query {
 		return result;
 	}
 	
-	public Post search_post_byID(String post_id) {
+	public Post search_post_byID(int post_id) {
 		try {
 			this.conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			this.stmt = conn.createStatement();
@@ -63,7 +63,7 @@ public class Query {
 			ResultSet result = stmt.executeQuery(statement);
 			
 			if(result.next()) {
-				String post_id_got = result.getNString("post_id");
+				int post_id_got = result.getInt("post_id");
 				String dir_video = result.getNString("dir_video");
 				String title = result.getNString("post_title");
 				String content = result.getNString("post_content");

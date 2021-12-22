@@ -11,19 +11,19 @@ public class TestDataInput {
 		User tutor91 = new User("tutor91", "pass91", "김튜터", "tutor91@test.com", 1, "HI Im a 튜터91");
 		User tutor99 = new User("tutor99", "pass99", "이튜터", "tutor99@test.com", 1, "99번 튜터입니다.");
 		
-		Post post00 = new Post("pid00", "some/adf/asdf/aa.mp4", "제목00", "내용00", "20211127", tutor91.id);
-		Post post01 = new Post("pid01", "some/adf/asdf/aa.mp4", "제목01", "내용01", "20211127", tutor91.id);
-		Post post02 = new Post("pid02", "some/adf/asdf/aa.mp4", "제목02", "내용02", "20211127", tutor91.id);
-		Post post03 = new Post("pid03", "some/adf/asdf/aa.mp4", "제목03", "내용03", "20211127", tutor91.id);
-		Post post04 = new Post("pid04", "some/adf/asdf/aa.mp4", "제목04", "내용04", "20211127", tutor91.id);
-		Post post05 = new Post("pid05", "some/adf/asdf/aa.mp4", "제목05", "내용05", "20211127", tutor99.id);
-		Post post06 = new Post("pid06", "some/adf/asdf/aa.mp4", "제목06", "내용06", "20211127", tutor99.id);
-		Post post07 = new Post("pid07", "some/adf/asdf/aa.mp4", "제목07", "내용07", "20211127", tutor99.id);
-		Post post08 = new Post("pid08", "some/adf/asdf/aa.mp4", "제목08", "내용08", "20211127", tutor99.id);
-		Post post09 = new Post("pid09", "some/adf/asdf/aa.mp4", "제목09", "내용09", "20211127", tutor99.id);
-		Post post10 = new Post("pid10", "some/adf/asdf/aa.mp4", "제목10", "내용10", "20211202", tutor99.id);
-		Post post11 = new Post("pid11", "some/adf/asdf/aa.mp4", "제목11", "내용11", "20211202", tutor99.id);
-		Post post12 = new Post("pid12", "some/adf/asdf/aa.mp4", "제목12", "내용12", "20211202", tutor99.id);
+		Post post00 = new Post("some/adf/asdf/aa.mp4", "제목00", "내용00", "20211127", tutor91.id);
+		Post post01 = new Post("some/adf/asdf/aa.mp4", "제목01", "내용01", "20211127", tutor91.id);
+		Post post02 = new Post("some/adf/asdf/aa.mp4", "제목02", "내용02", "20211127", tutor91.id);
+		Post post03 = new Post("some/adf/asdf/aa.mp4", "제목03", "내용03", "20211127", tutor91.id);
+		Post post04 = new Post("some/adf/asdf/aa.mp4", "제목04", "내용04", "20211127", tutor91.id);
+		Post post05 = new Post("some/adf/asdf/aa.mp4", "제목05", "내용05", "20211127", tutor99.id);
+		Post post06 = new Post("some/adf/asdf/aa.mp4", "제목06", "내용06", "20211127", tutor99.id);
+		Post post07 = new Post("some/adf/asdf/aa.mp4", "제목07", "내용07", "20211127", tutor99.id);
+		Post post08 = new Post("some/adf/asdf/aa.mp4", "제목08", "내용08", "20211127", tutor99.id);
+		Post post09 = new Post("some/adf/asdf/aa.mp4", "제목09", "내용09", "20211127", tutor99.id);
+		Post post10 = new Post("some/adf/asdf/aa.mp4", "제목10", "내용10", "20211202", tutor99.id);
+		Post post11 = new Post("some/adf/asdf/aa.mp4", "제목11", "내용11", "20211202", tutor99.id);
+		Post post12 = new Post("some/adf/asdf/aa.mp4", "제목12", "내용12", "20211202", tutor99.id);
 		
 		Upvote upv00 = new Upvote(tutie00.id, post05.post_id, 1);
 		Upvote upv01 = new Upvote(tutie00.id, post07.post_id, 1);
