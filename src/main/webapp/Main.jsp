@@ -83,7 +83,7 @@
 				<th scope="col" width="15%">작성일</th>
 			</tr>
 			<%
-			Post post = new Post("NONE", "NONE", "NONE", "NONE", "NONE", "NONE");//임시 객체
+			Post post = new Post();//임시 객체
 			Query sql = new Query();
 			ResultSet search = sql.search_all(post);//post 전체 resultset
 			%>

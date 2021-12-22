@@ -79,7 +79,7 @@
 <!-------------------------------------------------------게시물 목록------------------------------------------------------->
 <%
  Query sql = new Query();
- Post post = sql.search_post_byID(request.getParameter("post_id"));
+ Post post = sql.search_post_byID(Integer.parseInt(request.getParameter("post_id")));
  %>
 
 	<div id="div_post_list">

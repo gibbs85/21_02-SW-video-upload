@@ -6,5 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 10.0/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 10.0/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="E:/Gibbs/Programming/Java/myLibraries/cos-20.08/lib/cos.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -24,4 +24,8 @@ public class Post {
 		this.post_date = post_date;
 		this.writer_id = writer_id;
 	}
+	
+	public Post() {
+		//empty Post
+	}
 }
