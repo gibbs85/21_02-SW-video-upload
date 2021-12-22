@@ -28,7 +28,7 @@ public class CreateTable {
 		try {
 			String jdbcDriver = "jdbc:mariadb://localhost:3306/dbswvideo";
 			String dbUser = "root";
-			String dbPass = "2015211131";
+			String dbPass = "0125";
 
 			// 	DB Connection 생성
 				conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
