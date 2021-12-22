@@ -67,20 +67,7 @@ button.nav{
 	color: white;
 }
 
-button.none_button_text{
-	background: none;
-	border: none;
-	padding: 0;
-	color: #000000;
-}
-.none_button_text:hover{
-	background: none;
-	border: none;
-	padding: 0;
-	color: #000000;
-	text-decoration: underline;
-    cursor: pointer;
-}
+
 
 button.nav_none_buttonlike{
 	background: none;

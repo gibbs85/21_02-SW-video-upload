@@ -28,7 +28,7 @@ public class CreateTable {
 		try {
 			String jdbcDriver = "jdbc:mariadb://localhost:3306/dbswvideo";
 			String dbUser = "root";
-			String dbPass = "0000";
+			String dbPass = "2015211131";
 
 			// 	DB Connection �깮�꽦
 				conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
@@ -47,7 +47,8 @@ public class CreateTable {
 			
 			String create_table_statement_post =
 					"CREATE TABLE IF NOT EXISTS post("
-					+"post_id int(10) NOT NULL primary key,"
+					+"post_id int AUTO_INCREMENT,"
+					+" primary key(post_id), "
 					+"dir_video varchar(200) NOT NULL,"
 					+"post_title varchar(20) NOT NULL,"//
 					+"post_content varchar(100) NOT NULL,"
@@ -57,8 +58,8 @@ public class CreateTable {
 			
 			String create_table_statement_comment =
 					"CREATE TABLE IF NOT EXISTS comment("
-					+"comment_id int(10) NOT NULL primary key AUTO_INCREMENT,"
-					+"post_id varchar(10) NOT NULL,"
+					+"comment_id int NOT NULL primary key AUTO_INCREMENT,"
+					+"post_id int NOT NULL,"
 					+"foreign key(post_id) references post(post_id),"
 					+"comment_content varchar(128) NOT NULL,"
 					+"comment_writer_id varchar(20) NOT NULL,"
@@ -67,7 +68,7 @@ public class CreateTable {
 			String create_table_statement_upvote =
 					"CREATE TABLE IF NOT EXISTS upvote("
 					+"upvoter_id varchar(20) NOT NULL,"
-					+"upvoted_post_id varchar(10) NOT NULL,"
+					+"upvoted_post_id NOT NULL,"
 					+"primary key (upvoter_id, upvoted_post_id),"
 					+"foreign key(upvoter_id) references user(id),"
 					+"foreign key(upvoted_post_id) references post(post_id),"
