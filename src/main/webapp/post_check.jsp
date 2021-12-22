@@ -3,7 +3,7 @@
 <%@ page import="java.text.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<meta http-equiv="refresh" content="3;url=Main.jsp">
+<meta http-equiv="refresh" content="3;url=post_view.jsp">
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,6 @@
 
 <%
 	try {
-		String post_id = request.getParameter("post_id");
 		String dir_video = request.getParameter("fileName");
 		String post_title = request.getParameter("subject");
 		String post_content = request.getParameter("content");
@@ -40,7 +39,6 @@
 		<div>
 		<h1>결과</h1>
 		<p>전송된 내용은 다음과 같습니다.</p>
-		<p><%=post_id %></p>
 		<p><%=dir_video %></p>
 		<p><%=post_title %></p>
 		<p><%=post_content %></p>
