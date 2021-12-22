@@ -28,7 +28,7 @@ public class CreateTable {
 		try {
 			String jdbcDriver = "jdbc:mariadb://localhost:3306/dbswvideo";
 			String dbUser = "root";
-			String dbPass = "2015211131";
+			String dbPass = "0125";
 
 			// 	DB Connection �깮�꽦
 				conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
@@ -68,7 +68,7 @@ public class CreateTable {
 			String create_table_statement_upvote =
 					"CREATE TABLE IF NOT EXISTS upvote("
 					+"upvoter_id varchar(20) NOT NULL,"
-					+"upvoted_post_id NOT NULL,"
+					+"upvoted_post_id int(10) NOT NULL,"
 					+"primary key (upvoter_id, upvoted_post_id),"
 					+"foreign key(upvoter_id) references user(id),"
 					+"foreign key(upvoted_post_id) references post(post_id),"
