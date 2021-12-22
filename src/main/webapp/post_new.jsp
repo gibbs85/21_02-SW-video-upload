@@ -59,13 +59,12 @@
 	<br>
 	<br>
 	<script>
-	var dt = new Date();
-	dt = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate(); 
+	document.getElementByld('currnetDatetime'.value=new Date().toISOString().slice(0,-1);
     </script>
     	<form action="borad_check.jsp" method="post" enctype="Multipart/form-data">
         	게시글 번호 : <input type="text" name="post_id" /><br/>
         	글쓴이 : <input type="text" name="id" value="<%=user_id %>" readonly><br/>
-        	<!--   날짜 : <input type="date" name="date" value="dt" readonly> <br/>!-->
+        	<!--   날짜 : <input type="datetime-local" name="date" id='currentDatetime' readonly> <br/>!-->
         	제목 : <input type="text" name="subject" /><br/>
         	본문 : <textarea type ="memo" cols="50" rows="8" name = "content"></textarea> <br/> 
         	
