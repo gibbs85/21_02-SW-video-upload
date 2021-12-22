@@ -14,6 +14,11 @@
     src/main/webapp/LoginCheck.jsp 라인 13~15
     src/main/webapp/boradCheck.jsp 라인 13~15
     src/main/webapp/IdCheck.jsp 라인 13~15
+    src/main/webapp/post_check.jsp 라인 24~26
+    src/main/webapp/SearchInfo.jsp 라인 13~15
+    src/main/webapp/VideoTutorFind.jsp 라인 54~56
+    
+    
     
     
     
