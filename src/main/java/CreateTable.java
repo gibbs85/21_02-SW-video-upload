@@ -4,18 +4,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /*
- * 관련 비기능 요구사항
- * 영상제목(게시물 제목) 20글자 이내
- * 영상설명 100글자 이내
- * 튜티는 영상추천/비추천 이벤트를 영상 한 개당 하나씩만
+ * 愿��젴 鍮꾧린�뒫 �슂援ъ궗�빆
+ * �쁺�긽�젣紐�(寃뚯떆臾� �젣紐�) 20湲��옄 �씠�궡
+ * �쁺�긽�꽕紐� 100湲��옄 �씠�궡
+ * �뒠�떚�뒗 �쁺�긽異붿쿇/鍮꾩텛泥� �씠踰ㅽ듃瑜� �쁺�긽 �븳 媛쒕떦 �븯�굹�뵫留�
  */
 
 /*
- * ----------수정 사항----------
- * 2021/12/16 박동옥
+ * ----------�닔�젙 �궗�빆----------
+ * 2021/12/16 諛뺣룞�삦
  * 		post_title varchar(128) -> varchar(20)
  * 		post_content varchar(512) -> varchar(100)
- * 		statement_suggestion 은 삭제 예정
+ * 		statement_suggestion �� �궘�젣 �삁�젙
  */
 
 public class CreateTable {
@@ -28,11 +28,11 @@ public class CreateTable {
 		try {
 			String jdbcDriver = "jdbc:mariadb://localhost:3306/dbswvideo";
 			String dbUser = "root";
-			String dbPass = "0125";
+			String dbPass = "0000";
 
-			// 	DB Connection 생성
+			// 	DB Connection �깮�꽦
 				conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			// 	Statement 생성
+			// 	Statement �깮�꽦
 				stmt = conn.createStatement();
 
 				System.out.println("this far");
@@ -47,7 +47,7 @@ public class CreateTable {
 			
 			String create_table_statement_post =
 					"CREATE TABLE IF NOT EXISTS post("
-					+"post_id varchar(10) NOT NULL primary key,"
+					+"post_id int(10) NOT NULL primary key,"
 					+"dir_video varchar(200) NOT NULL,"
 					+"post_title varchar(20) NOT NULL,"//
 					+"post_content varchar(100) NOT NULL,"
@@ -57,7 +57,7 @@ public class CreateTable {
 			
 			String create_table_statement_comment =
 					"CREATE TABLE IF NOT EXISTS comment("
-					+"comment_id int(10) NOT NULL AUTO_INCREMENT primary key,"
+					+"comment_id int(10) NOT NULL primary key AUTO_INCREMENT,"
 					+"post_id varchar(10) NOT NULL,"
 					+"foreign key(post_id) references post(post_id),"
 					+"comment_content varchar(128) NOT NULL,"
@@ -71,7 +71,7 @@ public class CreateTable {
 					+"primary key (upvoter_id, upvoted_post_id),"
 					+"foreign key(upvoter_id) references user(id),"
 					+"foreign key(upvoted_post_id) references post(post_id),"
-					+"upvote int NOT NULL);"; // 1 == 추천, -1 == 비추천, 0은 table에서 삭제
+					+"upvote int NOT NULL);"; // 1 == 異붿쿇, -1 == 鍮꾩텛泥�, 0�� table�뿉�꽌 �궘�젣
 					
 					
 					
