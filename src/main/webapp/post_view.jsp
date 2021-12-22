@@ -76,7 +76,7 @@
 		</div>
 	</div>
 	
-<!-------------------------------------------------------게시물 목록------------------------------------------------------->
+<!-------------------------------------------------------게시물------------------------------------------------------->
 <%
  Query sql = new Query();
  Post post = sql.search_post_byID(request.getParameter("post_id"));
@@ -87,7 +87,15 @@
 		<h>영상경로: <%=post.dir_video%></h><br>
 		<h>설명: <%=post.post_content%></h><br>
 		<h>작성일: <%=post.post_date%></h><br>
-		<h>작성자: <%=post.writer_id %></h><br>
+		<h>작성자: <%=post.writer_id %></h><br> <br> <br> <br>
 	</div>
+	
+<!------------------------------------------------------댓글------------------------------------------------------->
+<div>
+	<form action="post_check.jsp" method="post" enctype="Multipart/form-data">
+		<p> 댓글 </p>
+        <textarea id="comment" name="comment"></textarea>
+        <input type="submit" value="전송" /> 
+</div>
 </body>
 </html>
