@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,16 +59,17 @@
 	<br>
 	<br>
 	<br>
-	<script>
-	document.getElementByld('currnetDatetime'.value=new Date().toISOString().slice(0,-1);
-    </script>
-    	<form action="borad_check.jsp" method="post" enctype="Multipart/form-data">
-        	게시글 번호 : <input type="text" name="post_id" /><br/>
+<% 	Date from = new Date();
+	SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String to = transFormat.format(from);
+	%>
+    
+    	<form action="post_check.jsp" method="post" enctype="Multipart/form-data">
         	글쓴이 : <input type="text" name="id" value="<%=user_id %>" readonly><br/>
-        	<!--   날짜 : <input type="datetime-local" name="date" id='currentDatetime' readonly> <br/>!-->
+        	날짜 : <input type="text" name="date" value="<%=to %>"readonly> <br/>
         	제목 : <input type="text" name="subject" /><br/>
         	본문 : <textarea type ="memo" cols="50" rows="8" name = "content"></textarea> <br/> 
-        	
+        	<!--  -->
         	<!--
 	            파일 업로드는 input type="file"로 지정한다.
     	     -->
